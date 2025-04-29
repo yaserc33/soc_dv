@@ -61,6 +61,10 @@ assign wb_s2m_dat_net= {24'b0 , wif.dout}; //our wb uvc support one byte data_ou
 
 
 
+ wire scl;
+ wire sda; 
+
+
  wb_soc_top wb_top (
 
     .wb_clk(clock),
@@ -88,7 +92,12 @@ assign wb_s2m_dat_net= {24'b0 , wif.dout}; //our wb uvc support one byte data_ou
 
     // uart
     .o_uart_tx(),
-    .i_uart_rx()
+    .i_uart_rx(),
+
+    //i2c
+    .scl(scl), 
+    .sda(sda)
+    
 );
 
 

@@ -9,7 +9,6 @@ module top;
   `include "uvm_macros.svh"
   import wb_pkg::*;
   import clock_and_reset_pkg::*;
-  import clock_and_reset_pkg::*;
   import spi_pkg::*;
   
   
@@ -36,6 +35,7 @@ module top;
   initial begin
   $dumpfile("wave.vcd");
   $dumpvars;
+
   end
 
 endmodule:top

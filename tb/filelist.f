@@ -22,6 +22,14 @@
 
 +incdir+../dut  
 
+
+// SPI files
+../dut/i2c/i2c_master_bit_ctrl.v
+../dut/i2c/i2c_master_byte_ctrl.v
+//../dut/i2c/i2c_master_defines.v
+../dut/i2c/i2c_master_top.v
+
+
 // SPI files
 ../dut/spi/fifo4.v
 ../dut/spi/simple_spi_top.v
@@ -56,4 +64,5 @@ top.sv
 
 //     run command
 // vcs -sverilog -timescale=1ns/1ns -full64 -f filelist.f -ntb_opts -uvm   -o   simv ;     ./simv -f run.f;
+
 

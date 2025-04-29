@@ -46,6 +46,117 @@ endclass : wb_base_seq
 
 
 
+//####################################################################################
+// I2c  sequences 
+//#####################################################################################
+
+
+//------------------------------------------------------------------------------
+// SEQUENCE: set the mode of i2c core to 400khz (Fast mode)
+//------------------------------------------------------------------------------
+
+class i2c_400k_seq extends wb_base_seq;
+
+  function new(string name = get_type_name());
+    super.new(name);
+  endfunction
+
+  `uvm_object_utils(i2c_400k_seq)
+
+  virtual task body();
+    `uvm_info(get_type_name(), "Executing sequence", UVM_LOW)
+
+
+#60 //waiting to  reset to finish  
+
+//  prescale the SCL clock
+    `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h40; //Clock Prescale register lo-byte 
+                   din == 8'b0011_0001;  // (100M)/ (5*400K) -1 = 8'd49  ==> 0011_0001
+                   valid_sb == 0;  //indicate that it's a read sequence
+                 })
+
+    `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h41; //Clock Prescale register HI-byte 
+                   din == 8'b0000_0000;  // (100M)/ (5*400K) -1 = 16'd0049  ==> 00000_0000_0011_0001
+                   valid_sb == 0;  //indicate that it's a read sequence
+                 })
+
+    //enable i2c control register
+    `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h42; //i2c control register (ctr)
+                   din == 8'b1000_0000;  //7:en i2c   6: en inte
+                   valid_sb == 0;  //indicate that it's a read sequence
+                 })
+
+
+  endtask : body
+
+endclass : i2c_400k_seq
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+// SEQUENCE: i2c_write_byte_seq  this sequence write a single byte to test the intgration of wb & i2c 
+//------------------------------------------------------------------------------
+
+class i2c_write_byte_seq extends wb_base_seq;
+
+  function new(string name = get_type_name());
+    super.new(name);
+  endfunction
+
+  `uvm_object_utils(i2c_write_byte_seq)
+
+  virtual task body();
+    `uvm_info(get_type_name(), "Executing sequence", UVM_LOW)
+
+
+
+
+     `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h43; //i2c transmit register
+                   din == 8'b1010_1010; // 7-1: random addr, 0: write
+                   valid_sb == 0;  //indicate that it's a read sequence
+                 })
+
+
+      `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h44; //i2c command register
+                   din == 8'b1001_0000; //sta & wr
+                   valid_sb == 0;  //indicate that it's a read sequence
+                 })
+
+    // to pe handeld
+    #1_000_000;
+
+
+
+
+  endtask : body
+
+endclass : i2c_write_byte_seq
+
+
+
+
+
+
+//####################################################################################
+// SPI  sequences 
+//#####################################################################################
 
 
 //------------------------------------------------------------------------------
@@ -307,8 +418,6 @@ class wb_read_spi2_seq extends wb_base_seq;
   endtask : body
 
 endclass : wb_read_spi2_seq
-
-
 
 
 

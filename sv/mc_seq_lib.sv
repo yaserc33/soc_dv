@@ -44,11 +44,41 @@ endclass: mc_seq
 
 
 
+// i2c
+
+class i2c_seq extends mc_seq;
+    
+    `uvm_object_utils(i2c_seq)
+ 
+
+    function new(string name ="i2c_seq");
+        super.new(name);
+    endfunction:new
+
+
+
+//declareing the sequences I want to use
+i2c_400k_seq i2c_400k;
+i2c_write_byte_seq i2c_write_byte;
+
+
+
+// do the SEQs in the targeted seqr
+virtual task body;
+`uvm_do_on(i2c_400k, p_sequencer.wb_seqr)
+`uvm_do_on(i2c_write_byte, p_sequencer.wb_seqr)
+
+
+endtask:body
+
+
+endclass: i2c_seq
 
 
 
 
 
+//// spi sequences 
 
 class write_seq extends mc_seq;
     
@@ -135,3 +165,7 @@ endtask:body
 
 
 endclass: read_seq
+
+
+
+

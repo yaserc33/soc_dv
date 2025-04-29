@@ -24,6 +24,12 @@ module wb_soc_top (
     output logic       o_spi_2_cs_n,     // slave select (active low)
     output logic       o_spi_2_mosi,     // MasterOut SlaveIN
     input  logic       i_spi_2_miso,     // MasterIn SlaveOut  
+   
+   
+    // i2c 
+    inout wire sda,
+    inout wire scl,
+ 
 
     // uart
     output logic        o_uart_tx,
@@ -79,6 +85,23 @@ module wb_soc_top (
     wire        wb_s2m_uart_ack;
     wire        wb_s2m_uart_err;
     wire        wb_s2m_uart_rty;
+ 
+    // i2c
+    wire [31:0] wb_m2s_i2c_adr;
+    wire [31:0] wb_m2s_i2c_dat;
+    wire  [3:0] wb_m2s_i2c_sel;
+    wire        wb_m2s_i2c_we;
+    wire        wb_m2s_i2c_cyc;
+    wire        wb_m2s_i2c_stb;
+    wire  [2:0] wb_m2s_i2c_cti;
+    wire  [1:0] wb_m2s_i2c_bte;
+    wire [31:0] wb_s2m_i2c_dat;
+    wire        wb_s2m_i2c_ack;
+    wire        wb_s2m_i2c_err;
+    wire        wb_s2m_i2c_rty;
+
+
+
 
 
     // wishbone interconnect, // later we should use interfaces to reduces number of lines
@@ -123,6 +146,19 @@ module wb_soc_top (
     .wb_spi_2_ack_i (wb_s2m_spi_2_ack),
     .wb_spi_2_err_i (wb_s2m_spi_2_err),
     .wb_spi_2_rty_i (wb_s2m_spi_2_rty),
+
+    .wb_i2c_adr_o (wb_m2s_i2c_adr),
+    .wb_i2c_dat_o (wb_m2s_i2c_dat),
+    .wb_i2c_sel_o (wb_m2s_i2c_sel),
+    .wb_i2c_we_o  (wb_m2s_i2c_we),
+    .wb_i2c_cyc_o (wb_m2s_i2c_cyc),
+    .wb_i2c_stb_o (wb_m2s_i2c_stb),
+    .wb_i2c_cti_o (wb_m2s_i2c_cti),
+    .wb_i2c_bte_o (wb_m2s_i2c_bte),
+    .wb_i2c_dat_i (wb_s2m_i2c_dat),
+    .wb_i2c_ack_i (wb_s2m_i2c_ack),
+    .wb_i2c_err_i (wb_s2m_i2c_err),
+    .wb_i2c_rty_i (wb_s2m_i2c_rty),
 
     .wb_uart_adr_o      (wb_m2s_uart_adr),
     .wb_uart_dat_o      (wb_m2s_uart_dat),
@@ -191,6 +227,53 @@ module wb_soc_top (
     
      assign wb_s2m_spi_2_err = 1'b0;
      assign wb_s2m_spi_2_rty = 1'b0;
+
+
+    // ============================================
+    //                      i2c
+    // ============================================ 
+
+wire [7:0] 		       i2c_rdt;
+assign wb_s2m_i2c_dat = {24'd0, i2c_rdt};
+
+logic scl_padoen_oe;
+logic sda_padoen_oe;
+logic scl_pad_o;
+logic sda_pad_o;
+logic scl_pad_i;
+logic sda_pad_i; 
+
+ assign scl = scl_padoen_oe ? 1'bz : scl_pad_o; 
+ assign sda = sda_padoen_oe ? 1'bz: sda_pad_o; 
+ assign scl_pad_i = scl; 
+ assign sda_pad_i = sda;
+
+pullup p1(scl); // pullup scl line
+pullup p2(sda); // pullup sda line
+
+ i2c_master_top i2c (
+  // Wishbone interface
+	.wb_clk_i(wb_clk),
+  .wb_rst_i(1'b0),
+  .arst_i(~wb_rst),
+  .wb_adr_i(wb_m2s_i2c_adr[2:0]),
+  .wb_dat_i(wb_m2s_i2c_dat[7:0]),
+  .wb_dat_o(i2c_rdt),
+	.wb_we_i(wb_m2s_i2c_we),
+  .wb_stb_i(wb_m2s_i2c_stb),
+  .wb_cyc_i(wb_m2s_i2c_cyc),
+  .wb_ack_o(wb_s2m_i2c_ack),
+  .wb_inta_o(),
+
+  // I2c interface
+	.scl_pad_i(scl),
+  .scl_pad_o(scl_pad_o),
+  .scl_padoen_o(scl_padoen_oe),
+  .sda_pad_i(sda), 
+  .sda_pad_o(sda_pad_o), 
+  .sda_padoen_o(sda_padoen_oe)
+  
+   );
 
     // ============================================
     //                      UART

@@ -53,7 +53,7 @@ class wb_write_test extends base_test;
 
 
     // Set the default sequence for the clock
-    uvm_config_wrapper::set(this, "*mc_seqr.run_phase",  "default_sequence", write_seq::get_type()); 
+    uvm_config_wrapper::set(this, "*mc_seqr.run_phase",  "default_sequence", i2c_seq::get_type()); 
     uvm_config_wrapper::set(this, "*clk_rst*", "default_sequence", clk10_rst5_seq::get_type());
 
 
