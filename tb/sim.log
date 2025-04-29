@@ -1,7 +1,7 @@
 Command: /home/Yasir_Alqulayti/DV/soc/tb/./simv -l sim.log +UVM_TESTNAME=wb_write_test +UVM_VERBOSITY=UVM_FULL -timescale 1ns/1ns
 Chronologic VCS simulator copyright 1991-2024
 Contains Synopsys proprietary information.
-Compiler version W-2024.09-SP1_Full64; Runtime version W-2024.09-SP1_Full64;  Apr 29 10:14 2025
+Compiler version W-2024.09-SP1_Full64; Runtime version W-2024.09-SP1_Full64;  Apr 29 11:56 2025
 ----------------------------------------------------------------
 UVM-1.1d.Synopsys
 (C) 2007-2013 Mentor Graphics Corporation
@@ -22,26 +22,27 @@ UVM-1.1d.Synopsys
 
       (Specify +UVM_NO_RELNOTES to turn off this notice)
 
+UVM_WARNING @ 0: reporter [TPRGED] Type name 'slave_base_seq' already registered with factory. No string-based lookup support for multiple types with the same type name.
 UVM_INFO @ 0: reporter [RNTST] Running test wb_write_test...
-UVM_INFO testbench.sv(58) @ 0: uvm_test_top.tb [testbench] connect_phase 🧑🏻‍⚖️
+UVM_INFO testbench.sv(70) @ 0: uvm_test_top.tb [testbench] connect_phase 🧑🏻‍⚖️
 UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 --------------------------------------------------------------------------
 Name                           Type                       Size  Value     
 --------------------------------------------------------------------------
-uvm_test_top                   wb_write_test              -     @470      
-  tb                           testbench                  -     @487      
-    clk_rst                    clock_and_reset_env        -     @510      
-      agent                    clock_and_reset_agent      -     @663      
-        driver                 clock_and_reset_driver     -     @674      
-          rsp_port             uvm_analysis_port          -     @689      
+uvm_test_top                   wb_write_test              -     @474      
+  tb                           testbench                  -     @491      
+    clk_rst                    clock_and_reset_env        -     @516      
+      agent                    clock_and_reset_agent      -     @676      
+        driver                 clock_and_reset_driver     -     @687      
+          rsp_port             uvm_analysis_port          -     @702      
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_port        uvm_seq_item_pull_port     -     @681      
+          seq_item_port        uvm_seq_item_pull_port     -     @694      
             recording_detail   uvm_verbosity              32    UVM_FULL  
           recording_detail     uvm_verbosity              32    UVM_FULL  
-        sequencer              clock_and_reset_sequencer  -     @697      
-          rsp_export           uvm_analysis_export        -     @704      
+        sequencer              clock_and_reset_sequencer  -     @710      
+          rsp_export           uvm_analysis_export        -     @717      
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_export      uvm_seq_item_pull_imp      -     @798      
+          seq_item_export      uvm_seq_item_pull_imp      -     @811      
             recording_detail   uvm_verbosity              32    UVM_FULL  
           recording_detail     uvm_verbosity              32    UVM_FULL  
           arbitration_queue    array                      0     -         
@@ -50,38 +51,69 @@ uvm_test_top                   wb_write_test              -     @470
           num_last_rsps        integral                   32    'd1       
         recording_detail       uvm_verbosity              32    UVM_FULL  
       recording_detail         uvm_verbosity              32    UVM_FULL  
-    mc_seqr                    mc_sequencer               -     @531      
-      rsp_export               uvm_analysis_export        -     @538      
+    i2c                        i2c_env                    -     @537      
+      slaves[0]                i2c_slave_agent            -     @827      
+        driver                 i2c_slave_driver           -     @966      
+          rsp_port             uvm_analysis_port          -     @981      
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          seq_item_port        uvm_seq_item_pull_port     -     @973      
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          slave_id             integral                   32    'h0       
+          recording_detail     uvm_verbosity              32    UVM_FULL  
+        monitor                i2c_slave_monitor          -     @842      
+          item_collected_port  uvm_analysis_port          -     @849      
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          slave_id             integral                   32    'h0       
+          recording_detail     uvm_verbosity              32    UVM_FULL  
+        sequencer              i2c_slave_sequencer        -     @857      
+          rsp_export           uvm_analysis_export        -     @864      
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          seq_item_export      uvm_seq_item_pull_imp      -     @958      
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          slave_id             integral                   32    'h0       
+          recording_detail     uvm_verbosity              32    UVM_FULL  
+          arbitration_queue    array                      0     -         
+          lock_queue           array                      0     -         
+          num_last_reqs        integral                   32    'd1       
+          num_last_rsps        integral                   32    'd1       
+        is_active              uvm_active_passive_enum    1     UVM_ACTIVE
+        slave_id               integral                   32    'h0       
         recording_detail       uvm_verbosity              32    UVM_FULL  
-      seq_item_export          uvm_seq_item_pull_imp      -     @632      
+      num_masters              integral                   32    'h0       
+      num_slaves               integral                   32    'h1       
+      recording_detail         uvm_verbosity              32    UVM_FULL  
+    mc_seqr                    mc_sequencer               -     @544      
+      rsp_export               uvm_analysis_export        -     @551      
+        recording_detail       uvm_verbosity              32    UVM_FULL  
+      seq_item_export          uvm_seq_item_pull_imp      -     @645      
         recording_detail       uvm_verbosity              32    UVM_FULL  
       recording_detail         uvm_verbosity              32    UVM_FULL  
       arbitration_queue        array                      0     -         
       lock_queue               array                      0     -         
       num_last_reqs            integral                   32    'd1       
       num_last_rsps            integral                   32    'd1       
-    sb                         scoreboard                 -     @640      
-      spi_in                   uvm_analysis_imp_spi       -     @647      
+    sb                         scoreboard                 -     @653      
+      spi_in                   uvm_analysis_imp_spi       -     @660      
         recording_detail       uvm_verbosity              32    UVM_FULL  
-      wb_in                    uvm_analysis_imp_wb        -     @655      
+      wb_in                    uvm_analysis_imp_wb        -     @668      
         recording_detail       uvm_verbosity              32    UVM_FULL  
       recording_detail         uvm_verbosity              32    UVM_FULL  
-    spi1                       spi_env                    -     @517      
-      slave_agent              spi_slave_agent            -     @819      
-        drv                    spi_slave_driver           -     @833      
-          rsp_port             uvm_analysis_port          -     @848      
+    spi1                       spi_env                    -     @523      
+      slave_agent              spi_slave_agent            -     @1008     
+        drv                    spi_slave_driver           -     @1022     
+          rsp_port             uvm_analysis_port          -     @1037     
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_port        uvm_seq_item_pull_port     -     @840      
-            recording_detail   uvm_verbosity              32    UVM_FULL  
-          recording_detail     uvm_verbosity              32    UVM_FULL  
-        mon                    spi_slave_monitor          -     @965      
-          spi_out              uvm_analysis_port          -     @972      
+          seq_item_port        uvm_seq_item_pull_port     -     @1029     
             recording_detail   uvm_verbosity              32    UVM_FULL  
           recording_detail     uvm_verbosity              32    UVM_FULL  
-        seqr                   spi_slave_sequencer        -     @856      
-          rsp_export           uvm_analysis_export        -     @863      
+        mon                    spi_slave_monitor          -     @1154     
+          spi_out              uvm_analysis_port          -     @1161     
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_export      uvm_seq_item_pull_imp      -     @957      
+          recording_detail     uvm_verbosity              32    UVM_FULL  
+        seqr                   spi_slave_sequencer        -     @1045     
+          rsp_export           uvm_analysis_export        -     @1052     
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          seq_item_export      uvm_seq_item_pull_imp      -     @1146     
             recording_detail   uvm_verbosity              32    UVM_FULL  
           recording_detail     uvm_verbosity              32    UVM_FULL  
           arbitration_queue    array                      0     -         
@@ -93,22 +125,22 @@ uvm_test_top                   wb_write_test              -     @470
       enable_master            integral                   32    'h0       
       enable_slave             integral                   32    'h1       
       recording_detail         uvm_verbosity              32    UVM_FULL  
-    spi2                       spi_env                    -     @524      
-      slave_agent              spi_slave_agent            -     @990      
-        drv                    spi_slave_driver           -     @1004     
-          rsp_port             uvm_analysis_port          -     @1019     
+    spi2                       spi_env                    -     @530      
+      slave_agent              spi_slave_agent            -     @1179     
+        drv                    spi_slave_driver           -     @1193     
+          rsp_port             uvm_analysis_port          -     @1208     
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_port        uvm_seq_item_pull_port     -     @1011     
-            recording_detail   uvm_verbosity              32    UVM_FULL  
-          recording_detail     uvm_verbosity              32    UVM_FULL  
-        mon                    spi_slave_monitor          -     @1136     
-          spi_out              uvm_analysis_port          -     @1143     
+          seq_item_port        uvm_seq_item_pull_port     -     @1200     
             recording_detail   uvm_verbosity              32    UVM_FULL  
           recording_detail     uvm_verbosity              32    UVM_FULL  
-        seqr                   spi_slave_sequencer        -     @1027     
-          rsp_export           uvm_analysis_export        -     @1034     
+        mon                    spi_slave_monitor          -     @1325     
+          spi_out              uvm_analysis_port          -     @1332     
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_export      uvm_seq_item_pull_imp      -     @1128     
+          recording_detail     uvm_verbosity              32    UVM_FULL  
+        seqr                   spi_slave_sequencer        -     @1216     
+          rsp_export           uvm_analysis_export        -     @1223     
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          seq_item_export      uvm_seq_item_pull_imp      -     @1317     
             recording_detail   uvm_verbosity              32    UVM_FULL  
           recording_detail     uvm_verbosity              32    UVM_FULL  
           arbitration_queue    array                      0     -         
@@ -120,24 +152,24 @@ uvm_test_top                   wb_write_test              -     @470
       enable_master            integral                   32    'h0       
       enable_slave             integral                   32    'h1       
       recording_detail         uvm_verbosity              32    UVM_FULL  
-    wb                         wb_env                     -     @503      
-      masters[0]               wb_master_agent            -     @1161     
-        driver                 wb_master_driver           -     @1300     
-          rsp_port             uvm_analysis_port          -     @1315     
+    wb                         wb_env                     -     @509      
+      masters[0]               wb_master_agent            -     @1350     
+        driver                 wb_master_driver           -     @1489     
+          rsp_port             uvm_analysis_port          -     @1504     
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_port        uvm_seq_item_pull_port     -     @1307     
-            recording_detail   uvm_verbosity              32    UVM_FULL  
-          master_id            integral                   32    'h0       
-          recording_detail     uvm_verbosity              32    UVM_FULL  
-        monitor                wb_master_monitor          -     @1176     
-          item_collected_port  uvm_analysis_port          -     @1183     
+          seq_item_port        uvm_seq_item_pull_port     -     @1496     
             recording_detail   uvm_verbosity              32    UVM_FULL  
           master_id            integral                   32    'h0       
           recording_detail     uvm_verbosity              32    UVM_FULL  
-        sequencer              wb_master_sequencer        -     @1191     
-          rsp_export           uvm_analysis_export        -     @1198     
+        monitor                wb_master_monitor          -     @1365     
+          item_collected_port  uvm_analysis_port          -     @1372     
             recording_detail   uvm_verbosity              32    UVM_FULL  
-          seq_item_export      uvm_seq_item_pull_imp      -     @1292     
+          master_id            integral                   32    'h0       
+          recording_detail     uvm_verbosity              32    UVM_FULL  
+        sequencer              wb_master_sequencer        -     @1380     
+          rsp_export           uvm_analysis_export        -     @1387     
+            recording_detail   uvm_verbosity              32    UVM_FULL  
+          seq_item_export      uvm_seq_item_pull_imp      -     @1481     
             recording_detail   uvm_verbosity              32    UVM_FULL  
           master_id            integral                   32    'h0       
           recording_detail     uvm_verbosity              32    UVM_FULL  
@@ -159,6 +191,7 @@ UVM_INFO ../spi/sv/../sv/spi_slave_monitor.sv(80) @ 0: uvm_test_top.tb.spi1.slav
 UVM_INFO ../spi/sv/../sv/spi_slave_driver.sv(47) @ 0: uvm_test_top.tb.spi2.slave_agent.drv [spi_slave_driver] Running Simulation...
 UVM_INFO ../spi/sv/../sv/spi_slave_monitor.sv(80) @ 0: uvm_test_top.tb.spi2.slave_agent.mon [spi_slave_monitor] Running Simulation...
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'run'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'run'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] Starting default sequence 'i2c_seq' for phase 'run'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'run'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'run'
@@ -168,6 +201,7 @@ UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.c
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO ../wb/sv/../sv/wb_master_seqs.sv(67) @ 0: uvm_test_top.tb.wb.masters[0].sequencer@@i2c_seq.i2c_400k [i2c_400k_seq] Executing sequence
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'pre_reset'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'pre_reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'pre_reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_reset'
@@ -175,6 +209,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'reset'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'reset'
@@ -182,6 +217,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'post_reset'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'post_reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'post_reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_reset'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_reset'
@@ -189,6 +225,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'pre_configure'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'pre_configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'pre_configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_configure'
@@ -196,6 +233,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'configure'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'configure'
@@ -203,6 +241,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'post_configure'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'post_configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'post_configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_configure'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_configure'
@@ -210,6 +249,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'pre_main'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'pre_main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'pre_main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_main'
@@ -217,6 +257,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'main'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'main'
@@ -224,6 +265,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'post_main'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'post_main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'post_main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_main'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_main'
@@ -231,6 +273,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'pre_shutdown'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'pre_shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'pre_shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'pre_shutdown'
@@ -238,6 +281,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'shutdown'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'shutdown'
@@ -245,6 +289,7 @@ UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.sv
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(48) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq [clk10_rst5_seq] Starting test_sequence sequence body
 UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer@@clk10_rst5_seq.cr [clock_and_reset_sequence] starting body clock_and_reset_wait_seq
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1390) @ 0: uvm_test_top.tb.clk_rst.agent.sequencer [PHASESEQ] Starting default sequence 'clk10_rst5_seq' for phase 'post_shutdown'
+UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.i2c.slaves[0].sequencer [PHASESEQ] No default phase sequence for phase 'post_shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.mc_seqr [PHASESEQ] No default phase sequence for phase 'post_shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi1.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_shutdown'
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/seq/uvm_sequencer_base.svh(1384) @ 0: uvm_test_top.tb.spi2.slave_agent.seqr [PHASESEQ] No default phase sequence for phase 'post_shutdown'
@@ -254,7 +299,7 @@ UVM_INFO ../clock_and_reset/sv/clock_and_reset_seq.sv(20) @ 0: uvm_test_top.tb.c
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 60: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                   
 ---------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1645                                   
+req                            wb_transaction  -     @1860                                   
   op_type                      op_type_enum    1     wb_write                                
   addr                         integral        32    'h40                                    
   din                          integral        8     'h31                                    
@@ -271,7 +316,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_monitor.sv(47) @ 86: uvm_test_top.tb.wb.master
 ------------------------------------------
 Name        Type            Size  Value   
 ------------------------------------------
-tr_collect  wb_transaction  -     @1641   
+tr_collect  wb_transaction  -     @1856   
   op_type   op_type_enum    1     wb_write
   addr      integral        32    'h0     
   din       integral        8     'h31    
@@ -282,7 +327,7 @@ tr_collect  wb_transaction  -     @1641
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 86: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                   
 ---------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1654                                   
+req                            wb_transaction  -     @1869                                   
   op_type                      op_type_enum    1     wb_write                                
   addr                         integral        32    'h41                                    
   din                          integral        8     'h0                                     
@@ -299,7 +344,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_monitor.sv(47) @ 106: uvm_test_top.tb.wb.maste
 ------------------------------------------
 Name        Type            Size  Value   
 ------------------------------------------
-tr_collect  wb_transaction  -     @1649   
+tr_collect  wb_transaction  -     @1864   
   op_type   op_type_enum    1     wb_write
   addr      integral        32    'h1     
   din       integral        8     'h0     
@@ -310,7 +355,7 @@ tr_collect  wb_transaction  -     @1649
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 106: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                   
 ---------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1662                                   
+req                            wb_transaction  -     @1877                                   
   op_type                      op_type_enum    1     wb_write                                
   addr                         integral        32    'h42                                    
   din                          integral        8     'h80                                    
@@ -327,7 +372,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_monitor.sv(47) @ 126: uvm_test_top.tb.wb.maste
 ------------------------------------------
 Name        Type            Size  Value   
 ------------------------------------------
-tr_collect  wb_transaction  -     @1658   
+tr_collect  wb_transaction  -     @1873   
   op_type   op_type_enum    1     wb_write
   addr      integral        32    'h2     
   din       integral        8     'h80    
@@ -339,7 +384,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_seqs.sv(122) @ 126: uvm_test_top.tb.wb.masters
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 126: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                         
 ---------------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1674                                         
+req                            wb_transaction  -     @1889                                         
   op_type                      op_type_enum    1     wb_write                                      
   addr                         integral        32    'h43                                          
   din                          integral        8     'haa                                          
@@ -356,7 +401,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_monitor.sv(47) @ 146: uvm_test_top.tb.wb.maste
 ------------------------------------------
 Name        Type            Size  Value   
 ------------------------------------------
-tr_collect  wb_transaction  -     @1666   
+tr_collect  wb_transaction  -     @1881   
   op_type   op_type_enum    1     wb_write
   addr      integral        32    'h3     
   din       integral        8     'haa    
@@ -367,7 +412,7 @@ tr_collect  wb_transaction  -     @1666
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 146: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                         
 ---------------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1682                                         
+req                            wb_transaction  -     @1897                                         
   op_type                      op_type_enum    1     wb_write                                      
   addr                         integral        32    'h44                                          
   din                          integral        8     'h90                                          
@@ -384,7 +429,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_monitor.sv(47) @ 166: uvm_test_top.tb.wb.maste
 ------------------------------------------
 Name        Type            Size  Value   
 ------------------------------------------
-tr_collect  wb_transaction  -     @1678   
+tr_collect  wb_transaction  -     @1893   
   op_type   op_type_enum    1     wb_write
   addr      integral        32    'h0     
   din       integral        8     'h90    
@@ -405,15 +450,16 @@ UVM_INFO ../sv/scoreboard.sv(90) @ 1000266: uvm_test_top.tb.sb [SCOREBOARD] Tota
 --- UVM Report Summary ---
 
 ** Report counts by severity
-UVM_INFO :  120
-UVM_WARNING :    0
+UVM_INFO :  133
+UVM_WARNING :    1
 UVM_ERROR :    0
 UVM_FATAL :    0
 ** Report counts by id
-[PHASESEQ]    65
+[PHASESEQ]    78
 [RNTST]     1
 [SCOREBOARD]     6
 [TEST_DONE]     2
+[TPRGED]     1
 [UVMTOP]     1
 [clk10_rst5_seq]    13
 [clock_and_reset_sequence]    13
@@ -429,5 +475,5 @@ $finish called from file "/mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/base/uvm
 $finish at simulation time              1000266
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 1000266 ns
-CPU Time:      0.400 seconds;       Data structure size:   0.5Mb
-Tue Apr 29 10:14:40 2025
+CPU Time:      0.400 seconds;       Data structure size:   0.6Mb
+Tue Apr 29 11:56:23 2025

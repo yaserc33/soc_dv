@@ -1,6 +1,7 @@
 ///////////////////////////////////////
 #      inclouding the UVCs
 ///////////////////////////////////////
+
 +incdir+../wb/sv            # include directory for sv files 
 ../wb/sv/wb_pkg.sv          # compile YAPP package 
 ../wb/sv/wb_if.sv           # compile top level module 
@@ -13,17 +14,23 @@
 ../spi/sv/spi_pkg.sv
 ../spi/sv/spi_if.sv
 
++incdir+../i2c/sv 
+../i2c/sv/i2c_pkg.sv
+../i2c/sv/i2c_if.sv
+
+
+
 
 
 
 ///////////////////////////////////////
-#      inclouding the dut files
+#      inclouding the RTL files
 ///////////////////////////////////////
 
 +incdir+../dut  
 
 
-// SPI files
+// i2c files
 ../dut/i2c/i2c_master_bit_ctrl.v
 ../dut/i2c/i2c_master_byte_ctrl.v
 //../dut/i2c/i2c_master_defines.v

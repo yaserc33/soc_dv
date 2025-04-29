@@ -7,6 +7,7 @@ class mc_sequencer extends uvm_sequencer;
    wb_master_sequencer wb_seqr;
    spi_slave_sequencer   spi1_seqr;
    spi_slave_sequencer   spi2_seqr;
+   i2c_slave_sequencer   i2c_seqr;
    
     function new(string name = "mc_sequencer" , uvm_component parent );
     super.new(name, parent);        

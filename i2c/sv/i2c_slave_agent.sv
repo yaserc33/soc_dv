@@ -2,6 +2,8 @@ class i2c_slave_agent extends uvm_agent;
 
   // This field determines whether an agent is active or passive.
   uvm_active_passive_enum is_active = UVM_ACTIVE;
+  
+  
   // slave's id
   int slave_id;
 

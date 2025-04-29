@@ -1,4 +1,4 @@
-398      
+470      
 0 uvm_macros.svh
 0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/uvm_macros.svh
 0 macros/uvm_version_defines.svh
@@ -397,10 +397,83 @@
 0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/spi_env.sv
 0 ../wb/sv/../sv/spi_env.sv
 0 ../clock_and_reset/sv/../sv/spi_env.sv
-66
+0 ../sv/i2c_transaction.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_transaction.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_transaction.sv
+0 ../wb/sv/../sv/i2c_transaction.sv
+0 ../clock_and_reset/sv/../sv/i2c_transaction.sv
+0 ../spi/sv/../sv/i2c_transaction.sv
+0 ../sv/i2c_master_sequencer.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_master_sequencer.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_master_sequencer.sv
+0 ../wb/sv/../sv/i2c_master_sequencer.sv
+0 ../clock_and_reset/sv/../sv/i2c_master_sequencer.sv
+0 ../spi/sv/../sv/i2c_master_sequencer.sv
+0 ../sv/i2c_master_driver.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_master_driver.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_master_driver.sv
+0 ../wb/sv/../sv/i2c_master_driver.sv
+0 ../clock_and_reset/sv/../sv/i2c_master_driver.sv
+0 ../spi/sv/../sv/i2c_master_driver.sv
+0 ../sv/i2c_master_monitor.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_master_monitor.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_master_monitor.sv
+0 ../wb/sv/../sv/i2c_master_monitor.sv
+0 ../clock_and_reset/sv/../sv/i2c_master_monitor.sv
+0 ../spi/sv/../sv/i2c_master_monitor.sv
+0 ../sv/i2c_master_agent.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_master_agent.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_master_agent.sv
+0 ../wb/sv/../sv/i2c_master_agent.sv
+0 ../clock_and_reset/sv/../sv/i2c_master_agent.sv
+0 ../spi/sv/../sv/i2c_master_agent.sv
+0 ../sv/i2c_master_seqs.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_master_seqs.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_master_seqs.sv
+0 ../wb/sv/../sv/i2c_master_seqs.sv
+0 ../clock_and_reset/sv/../sv/i2c_master_seqs.sv
+0 ../spi/sv/../sv/i2c_master_seqs.sv
+0 ../sv/i2c_slave_sequencer.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_slave_sequencer.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_slave_sequencer.sv
+0 ../wb/sv/../sv/i2c_slave_sequencer.sv
+0 ../clock_and_reset/sv/../sv/i2c_slave_sequencer.sv
+0 ../spi/sv/../sv/i2c_slave_sequencer.sv
+0 ../sv/i2c_slave_driver.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_slave_driver.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_slave_driver.sv
+0 ../wb/sv/../sv/i2c_slave_driver.sv
+0 ../clock_and_reset/sv/../sv/i2c_slave_driver.sv
+0 ../spi/sv/../sv/i2c_slave_driver.sv
+0 ../sv/i2c_slave_monitor.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_slave_monitor.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_slave_monitor.sv
+0 ../wb/sv/../sv/i2c_slave_monitor.sv
+0 ../clock_and_reset/sv/../sv/i2c_slave_monitor.sv
+0 ../spi/sv/../sv/i2c_slave_monitor.sv
+0 ../sv/i2c_slave_agent.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_slave_agent.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_slave_agent.sv
+0 ../wb/sv/../sv/i2c_slave_agent.sv
+0 ../clock_and_reset/sv/../sv/i2c_slave_agent.sv
+0 ../spi/sv/../sv/i2c_slave_agent.sv
+0 ../sv/i2c_slave_seqs.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_slave_seqs.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_slave_seqs.sv
+0 ../wb/sv/../sv/i2c_slave_seqs.sv
+0 ../clock_and_reset/sv/../sv/i2c_slave_seqs.sv
+0 ../spi/sv/../sv/i2c_slave_seqs.sv
+0 ../sv/i2c_env.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/systemverilog/../sv/i2c_env.sv
+0 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/../sv/i2c_env.sv
+0 ../wb/sv/../sv/i2c_env.sv
+0 ../clock_and_reset/sv/../sv/i2c_env.sv
+0 ../spi/sv/../sv/i2c_env.sv
+69
 +define+UVM_DIRECTC_OPTS
 +incdir+../clock_and_reset/sv
 +incdir+../dut
++incdir+../i2c/sv
 +incdir+../spi/sv
 +incdir+../wb/sv
 +incdir+/mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm
@@ -442,6 +515,8 @@ simv
 ../clock_and_reset/sv/clock_and_reset_pkg.sv
 ../spi/sv/spi_pkg.sv
 ../spi/sv/spi_if.sv
+../i2c/sv/i2c_pkg.sv
+../i2c/sv/i2c_if.sv
 ../dut/i2c/i2c_master_bit_ctrl.v
 ../dut/i2c/i2c_master_byte_ctrl.v
 ../dut/i2c/i2c_master_top.v
@@ -464,8 +539,10 @@ simv
 ../dut/hw_top.sv
 top.sv
 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/vcsdstub.tab
-129
+138
 which_declare=declare -f
+_P9K_TTY=/dev/pts/67
+_P9K_SSH_TTY=/dev/pts/67
 XDG_SESSION_ID=576
 XDG_RUNTIME_DIR=/run/user/1050
 XDG_DATA_DIRS=/home/Yasir_Alqulayti/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
@@ -500,10 +577,12 @@ UNAME=/bin/uname
 UFE_OPTIONAL_SPYGLASS_VCS_HOME=/mnt/NVME2/synopsys/ufe_optional_spyglass-vcs
 TXS_HOME=/mnt/NVME2/synopsys/txs
 TWEAKER_HOME=/mnt/NVME2/synopsys/tweaker
+TREE_COLORS=fi=00:mi=00:mh=00:ln=01;36:or=01;31:di=01;34:ow=01;34:st=34:tw=34:pi=01;33:so=01;33:do=01;33:bd=01;33:cd=01;33:su=01;35:sg=01;35:ca=01;35:ex=01;32
 TOOL_HOME=/mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64
 TESTMAX_HOME=/mnt/NVME2/synopsys/testmax
 TERM_PROGRAM_VERSION=1.99.3
 TERM_PROGRAM=vscode
+TERMINFO=/home/Yasir_Alqulayti/.terminfo
 TCM_HOME=/mnt/NVME2/synopsys/tcm
 SYN_HOME=/mnt/NVME2/synopsys/syn
 STARRC_HOME=/mnt/NVME2/synopsys/starrc
@@ -546,6 +625,8 @@ PRIMESIM_DI_HOME=/mnt/NVME2/synopsys/primesim_di
 PRIMELIB_HOME=/mnt/NVME2/synopsys/primelib
 PRIMECLOSURE_HOME=/mnt/NVME2/synopsys/primeclosure
 PPRTL_HOME=/mnt/NVME2/synopsys/pprtl
+P9K_TTY=old
+P9K_SSH=1
 OVA_UUM=0
 NT_HOME=/mnt/NVME2/synopsys/nt
 MW_HOME=/mnt/NVME2/synopsys/mw
@@ -555,8 +636,10 @@ MODULESHOME=/usr/share/Modules
 MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
 MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
 MECHANICAL_ENGINE_ANALYSIS_FUSION_HOME=/mnt/NVME2/synopsys/mechanical_engine_analysis_fusion
+LSCOLORS=ExGxDxDxCxDxDxFxFxexEx
 LOADEDMODULES=
-LESSOPEN=||/usr/bin/lesspipe.sh %s
+LESSOPEN=| /usr/bin/env /usr/bin/lesspipe.sh %s 2>/dev/null
+LESS=-iRFXMx4
 LC_HOME=/mnt/NVME2/synopsys/lc
 LC_ALL=C
 LAKER_HOME=/mnt/NVME2/synopsys/laker
@@ -569,6 +652,7 @@ ICC2_HOME=/mnt/NVME2/synopsys/icc2/W-2024.09-SP2/
 HSPICE_HOME=/mnt/NVME2/synopsys/hspice
 HSIM_HOME=/mnt/NVME2/synopsys/hsim
 HISTCONTROL=ignoredups
+GPG_TTY=/dev/pts/67
 GIT_ASKPASS=/home/Yasir_Alqulayti/.vscode-server/cli/servers/Stable-17baf841131aa23349f217ca7c570c76ee87b957/server/extensions/git/dist/askpass.sh
 FUSIONCOMPILER_HOME=/mnt/NVME2/synopsys/fusioncompiler
 FPGA_HOME=/mnt/NVME2/synopsys/fpga
@@ -596,13 +680,25 @@ BASH_FUNC__module_raw%%=() {  unset _mlshdbg;_ if [ "${MODULES_SILENT_SHELL_DEBU
 ALE_HOME=/mnt/NVME2/synopsys/ale
 0
 0
-203
+217
 1745324343 test_lib.sv
-1745239283 testbench.sv
+1745916974 testbench.sv
 1745910648 ../sv/mc_seq_lib.sv
-1745239283 ../sv/mc_sequencer.sv
+1745915230 ../sv/mc_sequencer.sv
 1745239283 ../sv/scoreboard.sv
 1745316991 ../dut/i2c/i2c_master_defines.v
+1745915682 ../i2c/sv/../sv/i2c_env.sv
+1745915634 ../i2c/sv/../sv/i2c_slave_seqs.sv
+1745912333 ../i2c/sv/../sv/i2c_slave_agent.sv
+1744879725 ../i2c/sv/../sv/i2c_slave_monitor.sv
+1744879663 ../i2c/sv/../sv/i2c_slave_driver.sv
+1744878985 ../i2c/sv/../sv/i2c_slave_sequencer.sv
+1744879097 ../i2c/sv/../sv/i2c_master_seqs.sv
+1744878985 ../i2c/sv/../sv/i2c_master_agent.sv
+1744879736 ../i2c/sv/../sv/i2c_master_monitor.sv
+1744879683 ../i2c/sv/../sv/i2c_master_driver.sv
+1744878985 ../i2c/sv/../sv/i2c_master_sequencer.sv
+1745915611 ../i2c/sv/../sv/i2c_transaction.sv
 1745239283 ../spi/sv/../sv/spi_env.sv
 1745239283 ../spi/sv/../sv/spi_slave_agent.sv
 1745239283 ../spi/sv/../sv/spi_slave_driver.sv
@@ -629,7 +725,7 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1745239283 ../wb/sv/../sv/wb_slave_monitor.sv
 1745239283 ../wb/sv/../sv/wb_slave_driver.sv
 1745239283 ../wb/sv/../sv/wb_slave_sequencer.sv
-1745910870 ../wb/sv/../sv/wb_master_seqs.sv
+1745911210 ../wb/sv/../sv/wb_master_seqs.sv
 1745239283 ../wb/sv/../sv/wb_master_agent.sv
 1745239283 ../wb/sv/../sv/wb_master_monitor.sv
 1745239283 ../wb/sv/../sv/wb_master_driver.sv
@@ -770,8 +866,8 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1733289097 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/macros/snps_macros.svp
 1733289097 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/macros/uvm_version_defines.svh
 1733289098 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/uvm_macros.svh
-1745741562 top.sv
-1745323597 ../dut/hw_top.sv
+1745916599 top.sv
+1745916470 ../dut/hw_top.sv
 1745239283 ../dut/clkgen.sv
 1745828186 ../dut/WishboneInterconnect/wb_soc_top.sv
 1745318649 ../dut/WishboneInterconnect/wb_intercon.sv
@@ -791,6 +887,8 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1745317266 ../dut/i2c/i2c_master_top.v
 1745317272 ../dut/i2c/i2c_master_byte_ctrl.v
 1745317280 ../dut/i2c/i2c_master_bit_ctrl.v
+1745916748 ../i2c/sv/i2c_if.sv
+1745915774 ../i2c/sv/i2c_pkg.sv
 1745239283 ../spi/sv/spi_if.sv
 1745239283 ../spi/sv/spi_pkg.sv
 1745239283 ../clock_and_reset/sv/clock_and_reset_pkg.sv
@@ -799,7 +897,7 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1745239283 ../wb/sv/wb_pkg.sv
 1733289098 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/uvm_pkg.sv
 1733285154 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/vcsdstub.tab
-1745330544 filelist.f
+1745915586 filelist.f
 6
 1733289097 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/dpi/uvm_dpi.cc
 1733287584 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/vpdlogstub.o
@@ -807,5 +905,5 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1733286010 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/liberrorinf.so
 1733286000 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/libsnpsmalloc.so
 1733285992 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/libvfs.so
-1745910880 simv.daidir
+1745916983 simv.daidir
 -1 partitionlib

@@ -8,6 +8,7 @@ class testbench extends uvm_env;
   clock_and_reset_env clk_rst;
   spi_env spi1;
   spi_env spi2;
+  i2c_env i2c;
   mc_sequencer mc_seqr;
 
 //Declare a handle for scoreboard
@@ -21,19 +22,26 @@ class testbench extends uvm_env;
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
+    
     uvm_config_int::set(this, "*wb*", "num_masters", 1);
     uvm_config_int::set(this, "*wb*", "num_slaves", 0);
+    
     uvm_config_int::set(this, "*spi*", "enable_master", 0);
     uvm_config_int::set(this, "*spi*", "enable_slave", 1);
+   
+    uvm_config_int::set(this, "*i2c*", "num_masters", 0);
+    uvm_config_int::set(this, "*i2c*", "num_slaves", 1);
 
     wb = wb_env::type_id::create("wb", this);
     clk_rst = clock_and_reset_env::type_id::create("clk_rst", this);
     spi1 = spi_env::type_id::create("spi1", this);
     spi2 = spi_env::type_id::create("spi2", this);
+    i2c = i2c_env::type_id::create("i2c", this);
     mc_seqr = mc_sequencer::type_id::create("mc_seqr", this);
 
-  // Create Scoreboard
-  sb = scoreboard::type_id::create("sb", this);
+    // Create Scoreboard
+    sb = scoreboard::type_id::create("sb", this);
+    
   endfunction : build_phase
 
 
@@ -45,6 +53,10 @@ class testbench extends uvm_env;
     mc_seqr.spi1_seqr =spi1.slave_agent.seqr;
     mc_seqr.spi2_seqr =spi2.slave_agent.seqr;
     mc_seqr.wb_seqr = wb.masters[0].sequencer;
+    mc_seqr.i2c_seqr = i2c.slaves[0].sequencer;
+
+
+
 
     //Scoreboard connection 
     // TLM connections between spi and Scoreboard

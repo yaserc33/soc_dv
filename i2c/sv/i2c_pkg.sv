@@ -8,11 +8,11 @@ package i2c_pkg;
   `include "../sv/i2c_transaction.sv"
 
 
-  // `include "../sv/i2c_master_sequencer.sv"
-  // `include "../sv/i2c_master_driver.sv"
-  // `include "../sv/i2c_master_monitor.sv"
-  // `include "../sv/i2c_master_agent.sv"
-  // `include "../sv/i2c_master_seqs.sv"
+  `include "../sv/i2c_master_sequencer.sv"
+  `include "../sv/i2c_master_driver.sv"
+  `include "../sv/i2c_master_monitor.sv"
+  `include "../sv/i2c_master_agent.sv"
+  `include "../sv/i2c_master_seqs.sv"
 
   `include "../sv/i2c_slave_sequencer.sv"
   `include "../sv/i2c_slave_driver.sv"

@@ -49,27 +49,23 @@ endclass : slave_base_seq
 
 
 //------------------------------------------------------------------------------
-// SEQUENCE: empty sequance - Send an empty transaction to mimic the SPI response (handled in the driver).
+// SEQUENCE: this sequence will make the uvc act as i2c slave to rsponse to i2c master  
 //------------------------------------------------------------------------------
-class i2c_empty_seq extends slave_base_seq;
+class i2c_slave_seq extends slave_base_seq;
 
   function new(string name = get_type_name());
     super.new(name);
   endfunction
 
-  `uvm_object_utils(i2c_empty_seq)
+  `uvm_object_utils(i2c_slave_seq)
 
   virtual task body();
     `uvm_info(get_type_name(), "Executing sequence", UVM_LOW)
-    
-    `uvm_create(req)
-    `uvm_send(req)
-
-
-    `uvm_info(get_type_name(), $sformatf("i2c WRITE ADDRESS:%0d  DATA:%h", req.addr, req.din), UVM_MEDIUM)
+    `uvm_do(req)
+    `uvm_info(get_type_name(), $sformatf("i2c slave tr ::  dout(dumy data to be sent to master 'if needed'): %h", req.dout), UVM_MEDIUM)
 
   endtask : body
 
 
-endclass : i2c_empty_seq
+endclass : i2c_slave_seq
 

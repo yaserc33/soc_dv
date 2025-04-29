@@ -10,7 +10,9 @@ logic cs1 ;
 logic sclk2 ;
 logic cs2 ;
 
-//interfaces
+
+
+//interface initialization
 
 clock_and_reset_if cr_if (
               .clock(clock),
@@ -40,6 +42,10 @@ spi_if sif2 (
   );
 
 
+i2c_if iif (
+            .clk(clock),
+            .rst_n(reset));
+
 
 
 
@@ -60,9 +66,6 @@ assign wb_m2s_dat_net = {24'b0 , wif.din}; //our wb uvc support one byte data_in
 assign wb_s2m_dat_net= {24'b0 , wif.dout}; //our wb uvc support one byte data_out  for now
 
 
-
- wire scl;
- wire sda; 
 
 
  wb_soc_top wb_top (
@@ -95,8 +98,8 @@ assign wb_s2m_dat_net= {24'b0 , wif.dout}; //our wb uvc support one byte data_ou
     .i_uart_rx(),
 
     //i2c
-    .scl(scl), 
-    .sda(sda)
+    .scl(iif.scl), 
+    .sda(iif.sda)
     
 );
 

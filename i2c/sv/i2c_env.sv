@@ -1,6 +1,6 @@
 class i2c_env extends uvm_env;
 
-// Control properties
+// Control properties (will be controlled from tb)
 int unsigned num_masters = 0;
 int unsigned num_slaves = 0;
 

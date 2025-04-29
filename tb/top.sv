@@ -10,6 +10,7 @@ module top;
   import wb_pkg::*;
   import clock_and_reset_pkg::*;
   import spi_pkg::*;
+  import i2c_pkg::*;
   
   
   `include "../sv/scoreboard.sv"
@@ -25,6 +26,7 @@ module top;
     clock_and_reset_vif_config::set(null , "*clk_rst*" , "vif" , hw_top.cr_if);
     spi_vif_config::set(null,"*spi1.slave_agent.*","vif", hw_top.sif1);
     spi_vif_config::set(null,"*spi2.slave_agent.*","vif", hw_top.sif2);
+    i2c_vif_config::set(null,"*.tb.i2c.*","vif", hw_top.iif);
 
     run_test();
   end

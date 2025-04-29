@@ -67,7 +67,7 @@ class i2c_400k_seq extends wb_base_seq;
     `uvm_info(get_type_name(), "Executing sequence", UVM_LOW)
 
 
-#60 //waiting to  reset to finish  
+#60 //waiting to WB reset to finish  
 
 //  prescale the SCL clock
     `uvm_do_with(req,
@@ -148,6 +148,9 @@ class i2c_write_byte_seq extends wb_base_seq;
   endtask : body
 
 endclass : i2c_write_byte_seq
+
+
+
 
 
 
