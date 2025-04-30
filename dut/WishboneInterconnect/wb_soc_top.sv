@@ -240,13 +240,16 @@ logic scl_padoen_oe;
 logic sda_padoen_oe;
 logic scl_pad_o;
 logic sda_pad_o;
-logic scl_pad_i;
-logic sda_pad_i; 
+// logic scl_pad_i;
+// logic sda_pad_i; 
 
- assign scl = scl_padoen_oe ? 1'bz : scl_pad_o; 
- assign sda = sda_padoen_oe ? 1'bz: sda_pad_o; 
- assign scl_pad_i = scl; 
- assign sda_pad_i = sda;
+
+assign scl = scl_padoen_oe ? 1'bz : scl_pad_o; 
+assign sda = sda_padoen_oe ? 1'bz: sda_pad_o; 
+//assign scl_pad_i = scl; 
+//assign sda_pad_i = sda;
+
+	
 
 pullup p1(scl); // pullup scl line
 pullup p2(sda); // pullup sda line

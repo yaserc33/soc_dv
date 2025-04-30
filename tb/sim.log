@@ -1,7 +1,7 @@
 Command: /home/Yasir_Alqulayti/DV/soc/tb/./simv -l sim.log +UVM_TESTNAME=wb_write_test +UVM_VERBOSITY=UVM_FULL -timescale 1ns/1ns
 Chronologic VCS simulator copyright 1991-2024
 Contains Synopsys proprietary information.
-Compiler version W-2024.09-SP1_Full64; Runtime version W-2024.09-SP1_Full64;  Apr 29 11:56 2025
+Compiler version W-2024.09-SP1_Full64; Runtime version W-2024.09-SP1_Full64;  May  1 00:09 2025
 ----------------------------------------------------------------
 UVM-1.1d.Synopsys
 (C) 2007-2013 Mentor Graphics Corporation
@@ -22,9 +22,8 @@ UVM-1.1d.Synopsys
 
       (Specify +UVM_NO_RELNOTES to turn off this notice)
 
-UVM_WARNING @ 0: reporter [TPRGED] Type name 'slave_base_seq' already registered with factory. No string-based lookup support for multiple types with the same type name.
 UVM_INFO @ 0: reporter [RNTST] Running test wb_write_test...
-UVM_INFO testbench.sv(70) @ 0: uvm_test_top.tb [testbench] connect_phase 🧑🏻‍⚖️
+UVM_INFO testbench.sv(70) @ 0: uvm_test_top.tb [testbench] connect_phase
 UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 --------------------------------------------------------------------------
 Name                           Type                       Size  Value     
@@ -381,10 +380,25 @@ tr_collect  wb_transaction  -     @1873
 ------------------------------------------
 
 UVM_INFO ../wb/sv/../sv/wb_master_seqs.sv(122) @ 126: uvm_test_top.tb.wb.masters[0].sequencer@@i2c_seq.i2c_write_byte [i2c_write_byte_seq] Executing sequence
+UVM_INFO ../i2c/sv/../sv/i2c_slave_seqs.sv(63) @ 126: uvm_test_top.tb.i2c.slaves[0].sequencer@@i2c_seq.i2c_slave [i2c_slave_seq] Executing sequence
+UVM_INFO ../i2c/sv/../sv/i2c_slave_driver.sv(31) @ 126: uvm_test_top.tb.i2c.slaves[0].driver [i2c_slave_driver] -----------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                    
+-----------------------------------------------------------------------------------------------
+req                            i2c_transaction  -     @1898                                    
+  addr                         integral         8     'h0                                      
+  din                          integral         8     'h0                                      
+  dout                         integral         8     'hca                                     
+  begin_time                   time             64    126                                      
+  depth                        int              32    'd3                                      
+  parent sequence (name)       string           9     i2c_slave                                
+  parent sequence (full name)  string           41    uvm_test_top.tb.mc_seqr.i2c_seq.i2c_slave
+  sequencer                    string           39    uvm_test_top.tb.i2c.slaves[0].sequencer  
+-----------------------------------------------------------------------------------------------
+
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 126: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                         
 ---------------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1889                                         
+req                            wb_transaction  -     @1894                                         
   op_type                      op_type_enum    1     wb_write                                      
   addr                         integral        32    'h43                                          
   din                          integral        8     'haa                                          
@@ -412,7 +426,7 @@ tr_collect  wb_transaction  -     @1881
 UVM_INFO ../wb/sv/../sv/wb_master_driver.sv(32) @ 146: uvm_test_top.tb.wb.masters[0].driver [wb_master_driver] ---------------------------------------------------------------------------------------------------
 Name                           Type            Size  Value                                         
 ---------------------------------------------------------------------------------------------------
-req                            wb_transaction  -     @1897                                         
+req                            wb_transaction  -     @1906                                         
   op_type                      op_type_enum    1     wb_write                                      
   addr                         integral        32    'h44                                          
   din                          integral        8     'h90                                          
@@ -429,7 +443,7 @@ UVM_INFO ../wb/sv/../sv/wb_master_monitor.sv(47) @ 166: uvm_test_top.tb.wb.maste
 ------------------------------------------
 Name        Type            Size  Value   
 ------------------------------------------
-tr_collect  wb_transaction  -     @1893   
+tr_collect  wb_transaction  -     @1902   
   op_type   op_type_enum    1     wb_write
   addr      integral        32    'h0     
   din       integral        8     'h90    
@@ -437,6 +451,8 @@ tr_collect  wb_transaction  -     @1893
   valid_sb  integral        1     'h0     
 ------------------------------------------
 
+🥳🥳🥳🥳heder = 00000000 at $t               23706
+UVM_INFO ../i2c/sv/../sv/i2c_slave_seqs.sv(65) @ 23706: uvm_test_top.tb.i2c.slaves[0].sequencer@@i2c_seq.i2c_slave [i2c_slave_seq] i2c slave tr ::  dout(dumy data to be sent to master 'if needed'): ca
 UVM_INFO ../sv/mc_seq_lib.sv(37) @ 1000166: uvm_test_top.tb.mc_seqr@@i2c_seq [i2c_seq] drop objection
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/base/uvm_objection.svh(1250) @ 1000266: reporter [TEST_DONE] All end-of-test objections have been dropped. Calling stop tasks
 UVM_INFO /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/base/uvm_objection.svh(1274) @ 1000266: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
@@ -450,8 +466,8 @@ UVM_INFO ../sv/scoreboard.sv(90) @ 1000266: uvm_test_top.tb.sb [SCOREBOARD] Tota
 --- UVM Report Summary ---
 
 ** Report counts by severity
-UVM_INFO :  133
-UVM_WARNING :    1
+UVM_INFO :  136
+UVM_WARNING :    0
 UVM_ERROR :    0
 UVM_FATAL :    0
 ** Report counts by id
@@ -459,12 +475,13 @@ UVM_FATAL :    0
 [RNTST]     1
 [SCOREBOARD]     6
 [TEST_DONE]     2
-[TPRGED]     1
 [UVMTOP]     1
 [clk10_rst5_seq]    13
 [clock_and_reset_sequence]    13
 [i2c_400k_seq]     1
 [i2c_seq]     2
+[i2c_slave_driver]     1
+[i2c_slave_seq]     2
 [i2c_write_byte_seq]     1
 [spi_slave_driver]     2
 [spi_slave_monitor]     2
@@ -476,4 +493,4 @@ $finish at simulation time              1000266
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 1000266 ns
 CPU Time:      0.400 seconds;       Data structure size:   0.6Mb
-Tue Apr 29 11:56:23 2025
+Thu May  1 00:09:34 2025

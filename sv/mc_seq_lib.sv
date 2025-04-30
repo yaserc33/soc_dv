@@ -60,14 +60,19 @@ class i2c_seq extends mc_seq;
 //declareing the sequences I want to use
 i2c_400k_seq i2c_400k;
 i2c_write_byte_seq i2c_write_byte;
+i2c_slave_seq i2c_slave;
 
 
 
 // do the SEQs in the targeted seqr
-virtual task body;
-`uvm_do_on(i2c_400k, p_sequencer.wb_seqr)
-`uvm_do_on(i2c_write_byte, p_sequencer.wb_seqr)
+virtual task body();
 
+`uvm_do_on(i2c_400k, p_sequencer.wb_seqr)
+
+fork
+`uvm_do_on(i2c_write_byte, p_sequencer.wb_seqr)
+`uvm_do_on(i2c_slave, p_sequencer.i2c_seqr)
+join
 
 endtask:body
 

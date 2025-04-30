@@ -67,7 +67,7 @@ class testbench extends uvm_env;
 
 
 
-    `uvm_info(get_type_name(), "connect_phase 🧑🏻‍⚖️", UVM_FULL)
+    `uvm_info(get_type_name(), "connect_phase", UVM_FULL)
   endfunction : connect_phase
 
 

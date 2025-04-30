@@ -127,7 +127,7 @@ class i2c_write_byte_seq extends wb_base_seq;
      `uvm_do_with(req,
                  { op_type == wb_write ; 
                    addr == 32'h43; //i2c transmit register
-                   din == 8'b1010_1010; // 7-1: random addr, 0: write
+                   din == 8'b1010_101_0; // 7-1: slave addr [1010_101], 0: write
                    valid_sb == 0;  //indicate that it's a read sequence
                  })
 

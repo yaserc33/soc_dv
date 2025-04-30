@@ -1,14 +1,14 @@
 
-class slave_base_seq extends uvm_sequence #(i2c_transaction);
+class i2c_slave_base_seq extends uvm_sequence #(i2c_transaction);
 
   // Required macro for sequences automation
-  `uvm_object_utils(slave_base_seq)
+  `uvm_object_utils(i2c_slave_base_seq)
 
   string phase_name;
   uvm_phase phaseh;
 
   // Constructor
-  function new(string name = "slave_base_seq");
+  function new(string name = "i2c_slave_base_seq");
     super.new(name);
   endfunction
 
@@ -42,7 +42,7 @@ class slave_base_seq extends uvm_sequence #(i2c_transaction);
     end
   endtask : post_body
 
-endclass : slave_base_seq
+endclass : i2c_slave_base_seq
 
 
 
@@ -51,7 +51,7 @@ endclass : slave_base_seq
 //------------------------------------------------------------------------------
 // SEQUENCE: this sequence will make the uvc act as i2c slave to rsponse to i2c master  
 //------------------------------------------------------------------------------
-class i2c_slave_seq extends slave_base_seq;
+class i2c_slave_seq extends i2c_slave_base_seq;
 
   function new(string name = get_type_name());
     super.new(name);
