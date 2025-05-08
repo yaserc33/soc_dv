@@ -67,12 +67,18 @@ i2c_slave_seq i2c_slave;
 // do the SEQs in the targeted seqr
 virtual task body();
 
+
 `uvm_do_on(i2c_400k, p_sequencer.wb_seqr)
 
 fork
-`uvm_do_on(i2c_write_byte, p_sequencer.wb_seqr)
 `uvm_do_on(i2c_slave, p_sequencer.i2c_seqr)
+`uvm_do_on(i2c_write_byte, p_sequencer.wb_seqr)
 join
+
+
+
+
+
 
 endtask:body
 

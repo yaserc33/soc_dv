@@ -59,13 +59,6 @@ i2c_if iif (
 
 
 
-wire [31:0] wb_m2s_dat_net;
-wire [31:0] wb_s2m_dat_net;
-
-assign wb_m2s_dat_net = {24'b0 , wif.din}; //our wb uvc support one byte data_in  for now
-assign wb_s2m_dat_net= {24'b0 , wif.dout}; //our wb uvc support one byte data_out  for now
-
-
 
 
  wb_soc_top wb_top (
@@ -73,12 +66,12 @@ assign wb_s2m_dat_net= {24'b0 , wif.dout}; //our wb uvc support one byte data_ou
     .wb_clk(clock),
     .wb_rst(reset),
     .wb_m2s_adr(wif.addr),
-    .wb_m2s_dat(wb_m2s_dat_net), 
+    .wb_m2s_dat(wif.din), 
     .wb_m2s_sel(), // our wb uvc doesn't support sel for now  
     .wb_m2s_we(wif.we),
     .wb_m2s_cyc(wif.cyc),
     .wb_m2s_stb(wif.stb),
-    .wb_s2m_dat(wb_s2m_dat_net), 
+    .wb_s2m_dat(wif.dout), 
     .wb_s2m_ack(wif.ack),
   
     // spi 1

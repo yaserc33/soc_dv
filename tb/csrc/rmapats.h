@@ -2876,8 +2876,8 @@ void  rmaPropagate24_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate25_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate26_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate27_simv_daidir (UB  * pcode, scalar  val);
-void  rmaPropagate27_s0_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate28_simv_daidir (UB  * pcode, scalar  val);
+void  rmaPropagate28_s0_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate29_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate30_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate31_simv_daidir (UB  * pcode, scalar  val);
@@ -2887,6 +2887,7 @@ void  rmaPropagate34_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate35_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate36_simv_daidir (UB  * pcode, scalar  val);
 void  rmaPropagate37_simv_daidir (UB  * pcode, scalar  val);
+void  rmaPropagate38_simv_daidir (UB  * pcode, scalar  val);
 void  schedNewEvent (struct dummyq_struct * I1462, EBLK  * I1457, U  I622);
 #ifdef __cplusplus
 }

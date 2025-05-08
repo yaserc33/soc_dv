@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1746706043.684784250, "rt":7.57, "ut":7.26, "st":0.23}}
+{"vcselab":{"timestamp_begin":1746706051.331667679, "rt":0.70, "ut":0.17, "st":0.10}}
+{"link":{"timestamp_begin":1746706052.090479685, "rt":1.24, "ut":0.15, "st":0.15}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1746706043.377430700}
+{"VCS_COMP_START_TIME": 1746706043.377430700}
+{"VCS_COMP_END_TIME": 1746706053.397942691}
+{"VCS_USER_OPTIONS": "-sverilog -timescale=1ns/1ns -full64 -f filelist.f -ntb_opts -uvm -o simv"}
+{"vcs1": {"peak_mem": 375956}}
+{"vcselab": {"peak_mem": 174920}}

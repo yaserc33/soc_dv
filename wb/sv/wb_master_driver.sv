@@ -31,8 +31,9 @@ class wb_master_driver extends uvm_driver #(wb_transaction);
 
       `uvm_info(get_type_name(), req.sprint() ,UVM_MEDIUM)
       vif.send_to_dut(req);
+      req.dout = vif.dout; 
+      
       seq_item_port.item_done();
-      //put_response(rsp);
 
 
     end

@@ -6,10 +6,13 @@ class wb_base_seq extends uvm_sequence #(wb_transaction);
 
   string phase_name;
   uvm_phase phaseh;
+  wb_transaction tr;
 
   // Constructor
   function new(string name = "wb_base_seq");
     super.new(name);
+    tr = wb_transaction::type_id::create("tr");
+
   endfunction
 
 
@@ -74,14 +77,14 @@ class i2c_400k_seq extends wb_base_seq;
                  { op_type == wb_write ; 
                    addr == 32'h40; //Clock Prescale register lo-byte 
                    din == 8'b0011_0001;  // (100M)/ (5*400K) -1 = 8'd49  ==> 0011_0001
-                   valid_sb == 0;  //indicate that it's a read sequence
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
                  })
 
     `uvm_do_with(req,
                  { op_type == wb_write ; 
                    addr == 32'h41; //Clock Prescale register HI-byte 
                    din == 8'b0000_0000;  // (100M)/ (5*400K) -1 = 16'd0049  ==> 00000_0000_0011_0001
-                   valid_sb == 0;  //indicate that it's a read sequence
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
                  })
 
     //enable i2c control register
@@ -89,7 +92,7 @@ class i2c_400k_seq extends wb_base_seq;
                  { op_type == wb_write ; 
                    addr == 32'h42; //i2c control register (ctr)
                    din == 8'b1000_0000;  //7:en i2c   6: en inte
-                   valid_sb == 0;  //indicate that it's a read sequence
+                   valid_sb == 0;  ///indicate to scoreboard that this is configuration command
                  })
 
 
@@ -118,34 +121,112 @@ class i2c_write_byte_seq extends wb_base_seq;
 
   `uvm_object_utils(i2c_write_byte_seq)
 
+  bit [6:0] slave_addr =7'b1010101 ;
+  int count_polling = 0;
+
   virtual task body();
     `uvm_info(get_type_name(), "Executing sequence", UVM_LOW)
 
 
-
-
+ // sendign heaeder byte 
      `uvm_do_with(req,
                  { op_type == wb_write ; 
                    addr == 32'h43; //i2c transmit register
-                   din == 8'b1010_101_0; // 7-1: slave addr [1010_101], 0: write
-                   valid_sb == 0;  //indicate that it's a read sequence
+                   din == {slave_addr,1'b0}; // 7-1: slave addr [1010101], 0: write
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
                  })
-
-
       `uvm_do_with(req,
                  { op_type == wb_write ; 
                    addr == 32'h44; //i2c command register
                    din == 8'b1001_0000; //sta & wr
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
+                 })
+
+
+/////////////
+//polling for ACK && TIP 
+////////////              
+  
+  // this  additional polling transaction is "necessary" to bypass the initial dout value of 8'b0000_0000
+     `uvm_do_with(req,
+                 { op_type == wb_read ; 
+                   addr == 32'h44; //i2c status register
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
+                 })
+  count_polling =0;
+
+  while(1) begin :polling
+    count_polling++;
+      `uvm_do_with(req,
+                 { op_type == wb_read ; 
+                   addr == 32'h44; //i2c status register
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
+                 })
+
+  if (!req.dout[7] && !req.dout[1]) begin // check for ACK && TIP both bits should be de-asserted
+   $display("🥶");
+   break; // i2c finish transmiting 
+  end
+  else if (count_polling > 1_000_000) 
+    `uvm_fatal (get_type_name(), "WB took too long to poll I2C");
+  end 
+
+
+
+ 
+// sending dumy data byte
+       `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h43; //i2c transmit register
+                   din == 8'b1101_1101; // dumy data :DD
+                   valid_sb == 0;  //indicate that it's a read sequence
+                 })
+      `uvm_do_with(req,
+                 { op_type == wb_write ; 
+                   addr == 32'h44; //i2c command register
+                   din == 8'b0101_0000; //STO & WR
                    valid_sb == 0;  //indicate that it's a read sequence
                  })
 
-    // to pe handeld
-    #1_000_000;
 
+
+
+
+//////////////////
+//polling for STOP
+/////////////////
+   // this  additional polling transaction is "necessary" to bypass the initial dout value of 8'b0000_0000
+     `uvm_do_with(req,
+                 { op_type == wb_read ; 
+                   addr == 32'h44; //i2c status register
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
+                 })
+  count_polling =0;
+
+  while(1) begin 
+    count_polling++;
+      `uvm_do_with(req,
+                 { op_type == wb_read ; 
+                   addr == 32'h44; //i2c status register
+                   valid_sb == 0;  //indicate to scoreboard that this is configuration command
+                 })
+
+  if (!req.dout[6]) begin // check for STOP &&  should be de-asserted
+   $display("🥶 stop");
+   break; // i2c finish transmiting 
+  end
+  else if (count_polling > 1_000_000) 
+    `uvm_fatal (get_type_name(), "WB took too long to poll I2C");
+  end 
+
+
+    
 
 
 
   endtask : body
+
+
 
 endclass : i2c_write_byte_seq
 
