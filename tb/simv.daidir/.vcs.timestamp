@@ -539,22 +539,21 @@ simv
 ../dut/hw_top.sv
 top.sv
 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/vcsdstub.tab
-138
+135
 which_declare=declare -f
-_P9K_TTY=/dev/pts/66
-_P9K_SSH_TTY=/dev/pts/66
-XDG_SESSION_ID=1202
+_P9K_TTY=/dev/pts/39
+_P9K_SSH_TTY=/dev/pts/39
+XDG_SESSION_ID=1344
 XDG_RUNTIME_DIR=/run/user/1050
 XDG_DATA_DIRS=/home/Yasir_Alqulayti/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
 XA_HOME=/mnt/NVME2/synopsys/xa/W-2024.09-SP1
 VUI_HOME=/mnt/NVME2/synopsys/vui/W-2024.09-SP2
 VTRAN_HOME=/mnt/NVME2/synopsys/vtran/W-2024.09-SP2
-VSCODE_IPC_HOOK_CLI=/run/user/1050/vscode-ipc-b14ea35d-5f92-4e8a-b728-d87e34adc7ec.sock
-VSCODE_GIT_IPC_HANDLE=/run/user/1050/vscode-git-0778411172.sock
+VSCODE_IPC_HOOK_CLI=/run/user/1050/vscode-ipc-1745ee49-0a8b-4595-804b-cd16da5b80b7.sock
+VSCODE_GIT_IPC_HANDLE=/run/user/1050/vscode-git-944aab3d15.sock
 VSCODE_GIT_ASKPASS_NODE=/home/Yasir_Alqulayti/.vscode-server/cli/servers/Stable-17baf841131aa23349f217ca7c570c76ee87b957/server/node
 VSCODE_GIT_ASKPASS_MAIN=/home/Yasir_Alqulayti/.vscode-server/cli/servers/Stable-17baf841131aa23349f217ca7c570c76ee87b957/server/extensions/git/dist/askpass-main.js
 VSCODE_GIT_ASKPASS_EXTRA_ARGS=
-VSCODE_DEBUGPY_ADAPTER_ENDPOINTS=/home/Yasir_Alqulayti/.vscode-server/extensions/ms-python.debugpy-2025.6.0/.noConfigDebugAdapterEndpoints/endpoint-6507fabeabc3fc56.txt
 VMR_MODE_FLAG=64
 VGEN_HOME=/mnt/NVME2/synopsys/vgen/W-2024.09-SP2
 VERDI_HOME=/mnt/NVME2/synopsys/verdi/W-2024.09
@@ -588,8 +587,8 @@ SYN_HOME=/mnt/NVME2/synopsys/syn
 STARRC_HOME=/mnt/NVME2/synopsys/starrc
 SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 SSL_CERT_DIR=/etc/pki/tls/certs
-SSH_CONNECTION=192.168.1.11 63468 192.168.1.8 22
-SSH_CLIENT=192.168.1.11 63468 22
+SSH_CONNECTION=192.168.1.11 60727 192.168.1.8 22
+SSH_CLIENT=192.168.1.11 60727 22
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
 SPYGLASS_HOME=/mnt/NVME2/synopsys/spyglass/W-2024.09-SP1/SPYGLASS_HOME
 SPIKE_PATH=/usr/bin
@@ -614,7 +613,6 @@ RISCV_GCC=/mnt/SATA2/riscv32gcc/bin/riscv32-unknown-elf-gcc
 RISCV_DV_ROOT=/home/Yasir_Alqulayti/Documents/verif/riscv-dv
 RHSC_ELECTROTHERMAL_ANALYSIS_FUSION_HOME=/mnt/NVME2/synopsys/rhsc_electrothermal_analysis_fusion
 RHSC_ANALYSIS_FUSION_HOME=/mnt/NVME2/synopsys/rhsc_analysis_fusion
-PYDEVD_DISABLE_FILE_VALIDATION=1
 PRIME_HOME=/mnt/NVME2/synopsys/prime
 PRIMEWAVE_HOME=/mnt/NVME2/synopsys/primewave
 PRIMEWAVERELIABILITY_HOME=/mnt/NVME2/synopsys/primewavereliability
@@ -652,7 +650,7 @@ ICC2_HOME=/mnt/NVME2/synopsys/icc2/W-2024.09-SP2/
 HSPICE_HOME=/mnt/NVME2/synopsys/hspice
 HSIM_HOME=/mnt/NVME2/synopsys/hsim
 HISTCONTROL=ignoredups
-GPG_TTY=/dev/pts/66
+GPG_TTY=/dev/pts/39
 GIT_ASKPASS=/home/Yasir_Alqulayti/.vscode-server/cli/servers/Stable-17baf841131aa23349f217ca7c570c76ee87b957/server/extensions/git/dist/askpass.sh
 FUSIONCOMPILER_HOME=/mnt/NVME2/synopsys/fusioncompiler
 FPGA_HOME=/mnt/NVME2/synopsys/fpga
@@ -670,7 +668,6 @@ CMLP_HOME=/mnt/NVME2/synopsys/cmlp
 CF_HOME=/mnt/NVME2/synopsys/cf
 CERTITUDE_HOME=/mnt/NVME2/synopsys/certitude
 CCK_HOME=/mnt/NVME2/synopsys/cck
-BUNDLED_DEBUGPY_PATH=/home/Yasir_Alqulayti/.vscode-server/extensions/ms-python.debugpy-2025.6.0/bundled/libs/debugpy
 BASH_FUNC_which%%=() {  ( alias;_ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@_}
 BASH_FUNC_switchml%%=() {  typeset swfound=1;_ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then_ typeset swname='main';_ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then_ typeset swfound=0;_ unset MODULES_USE_COMPAT_VERSION;_ fi;_ else_ typeset swname='compatibility';_ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then_ typeset swfound=0;_ MODULES_USE_COMPAT_VERSION=1;_ export MODULES_USE_COMPAT_VERSION;_ fi;_ fi;_ if [ $swfound -eq 0 ]; then_ echo "Switching to Modules $swname version";_ source /usr/share/Modules/init/bash;_ else_ echo "Cannot switch to Modules $swname version, command not found";_ return 1;_ fi_}
 BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then_ eval "module $@";_ else_ /usr/bin/scl "$@";_ fi_}
@@ -683,14 +680,14 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 217
 1746536932 test_lib.sv
 1746041934 testbench.sv
-1746716354 ../sv/mc_seq_lib.sv
+1746804687 ../sv/mc_seq_lib.sv
 1745915230 ../sv/mc_sequencer.sv
-1745239283 ../sv/scoreboard.sv
+1746811519 ../sv/scoreboard.sv
 1745316991 ../dut/i2c/i2c_master_defines.v
 1745915682 ../i2c/sv/../sv/i2c_env.sv
 1746039175 ../i2c/sv/../sv/i2c_slave_seqs.sv
 1745912333 ../i2c/sv/../sv/i2c_slave_agent.sv
-1744879725 ../i2c/sv/../sv/i2c_slave_monitor.sv
+1746799692 ../i2c/sv/../sv/i2c_slave_monitor.sv
 1746042143 ../i2c/sv/../sv/i2c_slave_driver.sv
 1744878985 ../i2c/sv/../sv/i2c_slave_sequencer.sv
 1744879097 ../i2c/sv/../sv/i2c_master_seqs.sv
@@ -725,10 +722,10 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1745239283 ../wb/sv/../sv/wb_slave_monitor.sv
 1745239283 ../wb/sv/../sv/wb_slave_driver.sv
 1745239283 ../wb/sv/../sv/wb_slave_sequencer.sv
-1746716917 ../wb/sv/../sv/wb_master_seqs.sv
+1746810817 ../wb/sv/../sv/wb_master_seqs.sv
 1745239283 ../wb/sv/../sv/wb_master_agent.sv
-1745239283 ../wb/sv/../sv/wb_master_monitor.sv
-1746710607 ../wb/sv/../sv/wb_master_driver.sv
+1746804749 ../wb/sv/../sv/wb_master_monitor.sv
+1746799875 ../wb/sv/../sv/wb_master_driver.sv
 1745239283 ../wb/sv/../sv/wb_master_sequencer.sv
 1745239283 ../wb/sv/../sv/wb_transaction.sv
 1733289098 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/etc/uvm/vcs/vcs_uvm_alt.sv
@@ -887,7 +884,7 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1745317266 ../dut/i2c/i2c_master_top.v
 1745317272 ../dut/i2c/i2c_master_byte_ctrl.v
 1745317280 ../dut/i2c/i2c_master_bit_ctrl.v
-1746692229 ../i2c/sv/i2c_if.sv
+1746807797 ../i2c/sv/i2c_if.sv
 1745915774 ../i2c/sv/i2c_pkg.sv
 1745239283 ../spi/sv/spi_if.sv
 1745239283 ../spi/sv/spi_pkg.sv
@@ -905,5 +902,5 @@ ALE_HOME=/mnt/NVME2/synopsys/ale
 1733286010 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/liberrorinf.so
 1733286000 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/libsnpsmalloc.so
 1733285992 /mnt/NVME2/synopsys/vcs/W-2024.09-SP1/linux64/lib/libvfs.so
-1746716936 simv.daidir
+1746811535 simv.daidir
 -1 partitionlib

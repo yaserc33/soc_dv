@@ -60,10 +60,9 @@ class testbench extends uvm_env;
 
     //Scoreboard connection 
     // TLM connections between spi and Scoreboard
-    
-    //spi.slave_agent.mon.spi_out.connect(sb.spi_in); 
+    spi.slave_agent.mon.spi_out.connect(sb.spi_in); 
     // TLM connections between wb and Scoreboard
-    //wb.masters[0].monitor.item_collected_port.connect(sb.wb_in);
+    wb.masters[0].monitor.item_collected_port.connect(sb.wb_in);
 
 
 

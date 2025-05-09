@@ -1,21 +1,19 @@
 class scoreboard extends uvm_scoreboard;
     `uvm_component_utils(scoreboard)
 
-    // Declare analysis implementation objects
-    `uvm_analysis_imp_decl(_spi)
-    uvm_analysis_imp_spi#(spi_transaction, scoreboard) 
-    spi_in=new("spi_in", this);
 
-    `uvm_analysis_imp_decl(_wb)
+
+  ////////////////declaring the analysis port//////////////////
+  `uvm_analysis_imp_decl(_wb)
+  `uvm_analysis_imp_decl(_i2c)
+  `uvm_analysis_imp_decl(_spi)
+
+
     uvm_analysis_imp_wb#(wb_transaction, scoreboard) 
-    wb_in=new("wb_in", this);
-   
-
-    // Scoreboard Data Structures
-    spi_transaction spi_queue[$];  
-    wb_transaction wb_queue[$];   
-
-
+    uvm_analysis_imp_spi#(i2c_transaction, scoreboard) 
+    uvm_analysis_imp_spi#(spi_transaction, scoreboard) 
+  
+////////////////////////////////////////////////////////////////////
 
     // Counters for analysis
     int total_packets_received=0;
@@ -23,10 +21,27 @@ class scoreboard extends uvm_scoreboard;
     int total_wrong_packets=0;
     int total_spi_transactions=0;
     int total_wb_transactions=0; 
-     // Constructor
-    function new(string name = "scoreboard", uvm_component parent);
-        super.new(name, parent);
-    endfunction
+    int err;
+
+
+
+    // Scoreboard Data Structures
+    spi_transaction spi_queue[$];  
+    wb_transaction wb_queue[$];   
+
+
+
+    function new(string name= "scoreboard" , uvm_component parent);
+        super.new(name,  parent);
+
+    wb_imp=new("wb_imp", this);
+    i2c_imp=new("i2c_imp", this);
+    spi_imp=new("spi_imp", this);
+
+
+    endfunction :new
+
+
 
      // Transaction Capturing - SPI
     function void write_spi(spi_transaction t);
@@ -80,17 +95,47 @@ class scoreboard extends uvm_scoreboard;
         end
     endfunction
     
-    // report 
+
+
+
+
+
+
+
+
      function void report_phase(uvm_phase phase);
-        `uvm_info("SCOREBOARD", "--------------------SCOREBOARD REPORT--------------------:            ", UVM_LOW)
-        `uvm_info("SCOREBOARD", $sformatf("Total SPI Packets Received: %0d", total_spi_transactions), UVM_LOW)
-        `uvm_info("SCOREBOARD", $sformatf("Total WB Packets Received: %0d", total_wb_transactions), UVM_LOW)
-        `uvm_info("SCOREBOARD", $sformatf("Total Packets Received: %0d", total_packets_received), UVM_LOW)
-        `uvm_info("SCOREBOARD", $sformatf("Total Matched Packets: %0d", total_matched_packets), UVM_LOW)
-        `uvm_info("SCOREBOARD", $sformatf("Total Wrong Packets: %0d", total_wrong_packets), UVM_LOW)
+    super.report_phase(phase);
+    `uvm_info(get_type_name(),"printing report",UVM_NONE)
 
-    endfunction
+    $display("\n****************** TEST REPORT ******************\n");
 
-    endclass :scoreboard
+
+
+   $display("Packets Summary:\n");
+   $display( "   - Total WB Packets Received:  %d", total_wb_transactions);
+   $display( "   - Total SPI Packets Received: %d",total_spi_transactions);
+   $display( "   - Total I2C Packets Received: %d", 0/*total_i2c_transactions*/);
+   $display( "   - Total UART Packets Received:%d", 0 /*to be handeled*/);
+   $display( "   - Total Packets Received: %d", total_packets_received);
+   $display( "   - Total Matched Packets:  %d", total_matched_packets);
+   $display( "   - Number of Mismatches:   %d\n",err);
+      
+
+  if (err ) begin
+      $display("\n==================================================\n",
+      "                   TEST FAILED ❌\n",
+      "==================================================\n");
+  end else begin
+      $display("\n==================================================\n",
+      "                    TEST PASS ✅\n",
+      "==================================================\n");
+
+  end
+
+    $display("\n****************** END OF REPORT ******************\n");
+
+endfunction : report_phase
+
+endclass :scoreboard
 
     

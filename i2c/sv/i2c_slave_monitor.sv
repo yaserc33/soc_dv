@@ -36,25 +36,47 @@ class i2c_slave_monitor extends uvm_monitor;
 
   virtual task run_phase(uvm_phase phase);
 
-  //   forever begin 
-  //   tr_collect = i2c_transaction::type_id::create("tr_collect");
+    forever begin 
+    tr_collect = i2c_transaction::type_id::create("tr_collect");
 
-  //   collect();
+    collect();
 
-  //   `uvm_info(get_type_name(), $sformatf("transaction collected :\n%s",tr_collect.sprint()), UVM_FULL)
-  //  // item_collected_port.write(tr_collect);
-  //    end
+    `uvm_info(get_type_name(), $sformatf("🧬🧬transaction collected :\n%s",tr_collect.sprint()), UVM_LOW)
+   // item_collected_port.write(tr_collect);
+     end
   endtask : run_phase
 
 
 
 
-//this task rebuild the transaction from the interface 
+//this task should rebuild the transaction from the interface 
 task collect();
 
-//
+//start condtion
+@(negedge vif.sda iff  vif.scl);  
 
-endtask
+//read hedear byte (7bit addr + w/r bit)
+foreach (tr_collect.addr[i]) begin
+  @(posedge vif.scl);
+  tr_collect.addr[i] =vif.sda;
+end 
+@(posedge vif.scl); //skip ack bit 
+
+//read data byte 
+if (!tr_collect.addr[0]) begin // master write 
+    foreach (tr_collect.din[i]) begin
+      @(posedge vif.scl);
+      tr_collect.din[i] =vif.sda;
+    end 
+end else begin 
+    foreach (tr_collect.dout[i]) begin
+      @(posedge vif.scl);
+      tr_collect.dout[i] =vif.sda;
+    end 
+end
+@(posedge vif.scl); //skip ack bit 
+
+endtask:collect
 
 
 endclass : i2c_slave_monitor

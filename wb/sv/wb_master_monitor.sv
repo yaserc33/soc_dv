@@ -44,7 +44,7 @@ virtual task run_phase(uvm_phase phase);
 
     collect();
 
-    `uvm_info(get_type_name(), $sformatf("transaction collected :\n%s",tr_collect.sprint()), UVM_HIGH)
+    `uvm_info(get_type_name(), $sformatf("transaction collected :\n%s",tr_collect.sprint()), UVM_FULL)
     item_collected_port.write(tr_collect);
      end
   endtask : run_phase
@@ -58,7 +58,7 @@ task collect();
 wait(vif.ack);
 @(negedge vif.clk);
 tr_collect.op_type =  vif.we ? wb_write : wb_read;
-tr_collect.addr = vif.addr[1:0];
+tr_collect.addr = vif.addr;
 tr_collect.din = vif.din;
 tr_collect.dout = vif.dout;
 tr_collect.valid_sb=vif.valid_sb;

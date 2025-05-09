@@ -24,7 +24,7 @@ assign sda = sda_w;
  
  sda_w <= 1'bz;
 
-@(negedge sda & scl); //start condtion 
+@(negedge sda iff  scl); //start condtion 
 
 
         read_header ();
@@ -32,10 +32,10 @@ assign sda = sda_w;
         if ( Slave_addr == header[7:1] )  begin
             ack();
          
-          //  if (header[0] == 1'b0) //  0:R  1:W  from slave POV
-          //    read_byte();    
-          //  else 
-          //    write_byte(tr.dout);
+            if (header[0] == 1'b0) //  0:R  1:W  from slave POV
+             read_byte();    
+            else 
+             write_byte(tr.dout);
          end
          
 
@@ -72,10 +72,11 @@ end
 
 
 task write_byte (bit [7:0] dout);  
-
+$display("✅%b , %h", dout,dout);
+sda_w <=1'b0;
   foreach (dout[i]) begin
-    @(negedge scl);
-    sda_w <= dout[7 - i];  // send MSB first
+    #500;
+    sda_w <= dout[i];  // send MSB first
     @(negedge scl);
   end 
   sda_w <= 'z;  //release the line

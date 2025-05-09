@@ -29,7 +29,7 @@ class wb_master_driver extends uvm_driver #(wb_transaction);
       // Get new item from the sequencer
       seq_item_port.get_next_item(req);
 
-      `uvm_info(get_type_name(), req.sprint() ,UVM_MEDIUM)
+      //`uvm_info(get_type_name(), req.sprint() ,UVM_MEDIUM)
       vif.send_to_dut(req);
       req.dout = vif.dout; 
       
